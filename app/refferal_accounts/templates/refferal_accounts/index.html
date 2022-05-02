@@ -1,0 +1,11 @@
+{% extends "refferal_accounts/base.html" %} {% load static %}{% block title %} Refferal Accounts
+{% endblock%} {% block content%}
+<div class="container">
+  <h1>Refferal Accounts</h1>
+  <ul>
+    {% for account in refferal_accounts %}
+    <li>{{ account.first_name }}</li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock %} {% block jsfiles %} {% endblock jsfiles %}
