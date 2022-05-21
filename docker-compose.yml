@@ -6,6 +6,7 @@ services:
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - ./app/:/usr/src/app/
+      - static_volume:/usr/src/app/static
     ports:
       - 8000
     environment:
@@ -27,5 +28,7 @@ services:
       - 8000:80
     depends_on:
       - web
+volumes:
+  static_volume:
 
 
