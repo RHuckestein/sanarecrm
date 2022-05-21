@@ -1,0 +1,32 @@
+version: "3.8"
+services:
+  web:
+    build: ./app
+    image: 665412893463.dkr.ecr.us-east-1.amazonaws.com/sanarecrm:sanarecrmv1_web
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./app/:/usr/src/app/
+    ports:
+      - 8000
+    environment:
+      - DB_NAME=sanare_crm
+      - DB_USER=postgres
+      - DB_PASSWORD=jake19882
+      - DB_HOST=testingdatabase.cmwo9maaqhvt.us-east-1.rds.amazonaws.com
+      - DB_PORT=5432
+      - DATABASE=postgres
+      - VIRTUAL_HOST=ec2-18-206-169-127.compute-1.amazonaws.com
+      - VIRTUAL_PORT=8000
+    depends_on:
+      - pg
+  nginx:
+    build: ./nginx
+    image: 665412893463.dkr.ecr.us-east-1.amazonaws.com/sanarecrm:sanarecrmv1_nginx
+    volumes:
+      - static_volume:/usr/src/app/static
+    ports:
+      - 8000:80
+    depends_on:
+      - web
+
+
