@@ -17,8 +17,7 @@ services:
       - DATABASE=postgres
       - VIRTUAL_HOST=ec2-18-206-169-127.compute-1.amazonaws.com
       - VIRTUAL_PORT=8000
-    depends_on:
-      - pg
+ 
   nginx:
     build: ./nginx
     image: 665412893463.dkr.ecr.us-east-1.amazonaws.com/sanarecrm:sanarecrmv1_nginx
